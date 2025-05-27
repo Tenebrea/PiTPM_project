@@ -1,5 +1,5 @@
 # PiTPM_project
-TeamLead- Кирсанов платон
+TeamLead- Кирсанов Платон
 
 BackEnd- Булатов Андрей
 
