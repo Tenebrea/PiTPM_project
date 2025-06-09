@@ -13,6 +13,7 @@ class User(Base):
     username = Column(String(50), unique=True, index=True)
     email = Column(String(100), unique=True, index=True)
     hashed_password = Column(String(100))
+    role_id = Column(Integer, foreign_key = Role.id, nullable = False)
     disabled = Column(Boolean, default=False)
 
 class Category(Base):
@@ -50,7 +51,14 @@ class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, foreign_key = User.id, nullable = False)
+    delivery_date = Column(Date, nullable = False)
+    price = Column(Integer, nullable = False)
+
+
+class Order_Cart(Base):
+    id = Column(Integer, primary_key=True, index=True)
+    cart_id = Column(Integer, foreign_key = Cart.id, nullable = False)
+    order_id = Column(Integer, foreign_key = Order.id, nullable = False)
 
 Base.metadata.create_all(bind=engine)
 
